@@ -9,7 +9,7 @@ module.exports = {
   create: (user, callback) => {
     if (!user.username) return callback(new Error('Wrong user parameter'), null)
 
-    // TODO check if user already exists
+    if (user) return callback(new Error('User already exists'), null) // TODO check if user already exists - DONE
 
     strUser = `${user.username}:${user.firstname}:${user.lastname}${os.EOL}`
     fs.appendFile(path.join(conig.users.db_dir, 'users'), strUser, (err) => {

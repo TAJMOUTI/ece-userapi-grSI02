@@ -39,7 +39,19 @@ describe('Users', ()=> {
       })
     })
 
-    // TODO create a test "avoids creating if user already exists"
+    // TODO create a test "avoids creating if user already exists" - DONE
+    it('avoids creating if user already exists', (done)=> {
+      const user = {
+        username: 'sergkudinov',
+        firstname: 'Sergei',
+        lastname: 'Kudinov'
+      }
+      users.create(user, (err, result) => {
+        expect(err).to.be.equal('User already exists')
+        expect(result).to.be.null
+        done()
+      })
+    })
   })
 
   describe('Get', ()=> {
